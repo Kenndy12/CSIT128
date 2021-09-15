@@ -1,0 +1,517 @@
+<html>
+	<title>
+		CSIT128 A2 Assignment
+	</title>
+	<body>
+	
+	<!--- PART 1 --->
+	
+	
+	<div  style="margin:100px">
+			
+		<table style="border: solid black 1px;" height="250px" >
+		
+			<tr>
+				<th style="border: solid black 1px; background-color: lightblue; width:600px; height:60px;" colspan="3" >CSIT128: Assignment 2 </th> 
+				<th style="border: solid black 1px;  background-color: lightblue; width:350px; height:60px;" >Tutorial Group 4</th>
+			</tr>
+			
+			<tr > 
+				<td style="border: solid black 1px; "  rowspan="3 ">&nbsp;Student Number/Name/Email </td>
+				<td style="border: solid black 1px;">6742555</td>
+				<td style="border: solid black 1px;" >Limousine  </td>
+				<td style="border: solid black 1px;">limousine196@gmail.com </td> 
+			</tr>
+
+			<tr> 
+				<td style="border: solid black 1px;">6742014</td>
+				<td style="border: solid black 1px;">Kenndy</td>
+				<td style="border: solid black 1px;">k032@mymail.sim.edu.sg</td>
+			</tr>
+
+			<tr> 
+				<td style="border: solid black 1px;">6744205</td>
+				<td style="border: solid black 1px;">Patrick Figo Styadinata</td>
+				<td style="border: solid black 1px;">pfstyadi001@mymail.sim.edu.sg</td>
+			</tr>
+		</table>
+	</div>
+	
+	<hr>
+	<!--- END OF PART 1 HTML --->
+		
+		<form action="https://translate.google.com" method="get">
+			<table border = "0" width ="80%">
+				<tr>
+					<td width ="20%">Enter name: 
+					<td><input type="name" id ="userName" onchange="checkName()" placeholder="Enter name here"> <span type="text" id="nameErrorMsg"></span>
+				</tr>
+				<tr>
+					<td>Enter module code: 
+					<td><input type="code" id="modulecode" onchange="checkModule()"> <span type="text" id="moduleErrorMsg"> </span>
+				</tr>
+				<tr>
+					<td>Current Date:
+					<td><input type="text" size = "57px"id="clock" startClock() readonly>
+				</tr>
+				<tr>
+					<td>Number of weeks till end of year:
+					<td><span type ="text" id="timeTillEndOfWeek"> </span"
+				</tr>
+				<tr>
+					<td colspan ="2"><h1>Google Translate</h1>
+				</tr>
+				<tr>
+					<td>Translate from:
+						<select name="s1">
+							<option value="zh-cn">Chinese</option>
+							<option value="en" selected>English</option>
+							<option value="fr">French</option>
+							<option value="id">Indonesian</option>
+							<option value="jp">Japanese</option>
+							<option value="kr">Korean</option>
+							<option value="la">Latin</option>
+							<option value="my">Malay</option>
+						</select>
+					<td>To: 
+						<input type="radio" value="en" name="tl">English
+						<input type="radio" value="zh" name="tl">Chinese
+						<input type="radio" value="ms" name="tl">Malaysia
+						<input type="radio" value="id" name="tl">Indonesia
+						<input type="radio" value="ja" name="tl" checked>Japanese
+						<input type="radio" value="ko" name="tl">Korean
+				</tr>
+				<tr>
+					<td><textarea rows="3" cols="20" name="text" id="contentBox">Hello testing </textarea>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Google Translate">
+					<td><input type="reset" value="Reset Form">
+				</tr>
+				<tr>
+					<td>
+						Find Text:
+					</td>
+					<td>
+						<input type="text" id="findvalue" onchange="checkReplaceBox()">
+						<span style ="margin-left:70px;" id = "finderror"> </span> 
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Replace text: 
+					</td>
+					<td>
+						<input type="text" id="replacevalue" onchange="checkReplaceButton()" disabled>
+						<span style ="margin-left:70px;" id = "replaceerror"> </span> 
+					</td>
+				</tr>
+				
+			</table>
+		</form>
+			<table>
+					<tr>
+						<td>
+							<input type ="submit" value="Replace" id ="replacebutton" onclick="findAndReplace()" disabled>
+							<span style ="margin-left:60px;" id="replacementCount"> </span>
+						</td>
+					</tr>
+			</table>
+		
+	<hr>
+	<!--- END OF PART 2 HTML --->
+		<table border ="0" width="80%">
+			<tr>
+				<td width ="20%"> Enter lowest number: 
+				<td> <input type ="text" id = "lowestNum"onChange="checkLowest();"> <span style ="margin-left:60px;" id = "errorMsgLowest"> </span> 
+			</tr>
+			<tr>
+				<td width ="20%"> Enter highest number:
+				<td> <input type ="text" id = "highestNum"onChange = "checkHighest();"> <span style = "margin-left:60px;" id = "errorMsgHighest"> </span>
+			</tr>
+			<tr>
+				<td style="height:60px;"> <input id = "startButton" type ="submit" value ="Play" style="margin-left:180px;" onclick = "startGame()" disabled>
+			</tr>
+			<tr>
+				<td width ="20%"> Guess box
+				<td> <input type ="text" id ="guessBoxArea" disabled>
+			</tr>
+			<tr>
+				<td style="height:30px;" colspan = "2"> <span id ="feedbackMessage"> </span>
+			</tr>
+			<tr>
+				<td style="height:60px;"> <input id ="guessButton" type ="submit" value ="Guess" style="margin-left:180px;" onclick = "guessButtonClicked()" disabled>
+			</tr>
+			<tr>
+				<td id="outputMessage"> </td>
+			</tr>
+			<tr>
+				<td colspan ="10"> <ul id= "guessList"> </ul>
+			</tr>
+		</table>
+	<!--- END OF PART 3 HTML --->
+		
+		
+		<script>
+startClock();
+			endOfYear();
+			
+			function startClock(){
+				var clockSchedule = setInterval(displayClock, 1000);
+			}
+			
+			function displayClock(){
+				document.getElementById("clock").value = new Date();
+			}
+			
+			
+			function endOfYear(){
+				var endOfCurrentYear = new Date("December 31, 2020 24:00:00").getTime();
+				
+				var currentDate = new Date().getTime();
+				var timeTill2020 = endOfCurrentYear - currentDate;
+	
+				var convertToDays = Math.floor(timeTill2020 / (1000 * 60 * 60 * 24));
+				var convertToWeeks = Math.floor (convertToDays / 7);
+				
+				var realDayLeft = convertToDays - convertToWeeks * 7;
+				
+				document.getElementById("timeTillEndOfWeek").innerHTML = convertToDays + " days is " + convertToWeeks + " weeks and " + realDayLeft + " days.";
+			}
+			
+			function checkName() {
+				var userName = document.getElementById("userName").value;
+				
+				var patternForName = /^[A-Z]+[A-Za-z]{2,99}$/;
+				var patternForCapitalizingError = /^[A-Za-z]+[A-Za-z]{2,99}$/;
+				
+				var nameBoolean = patternForName.test(userName);
+				var capitalizingBoolean = patternForCapitalizingError.test(userName);
+				
+				var nameFirstLetter = userName.charAt(0);
+				
+				if (nameBoolean) {
+					document.getElementById("nameErrorMsg").innerHTML = "";
+				}
+				else if (nameBoolean == false && capitalizingBoolean == true) {
+					if (nameFirstLetter !== nameFirstLetter.toUpperCase()) {
+						var errorFirstCharMsg = "Name must start with an upper case letter";
+						document.getElementById("nameErrorMsg").innerHTML = errorFirstCharMsg.fontcolor("red").italics();
+					}
+				}
+				else if(userName.trim() == "") {
+					var fieldIsEmpty = "This field must be entered"
+					document.getElementById("nameErrorMsg").innerHTML = fieldIsEmpty.fontcolor("red").italics();
+				}
+				else {
+					var userNameInvalidMsg = "Contains number or special character";
+					document.getElementById("nameErrorMsg").innerHTML = userNameInvalidMsg.fontcolor("red").italics();
+				}
+			}
+			
+			function checkModule() {
+				var moduleCodePlaceholder = document.getElementById("modulecode").value;
+			
+		
+				var modulePattern = /^[a-z]{3}[1-9][0-9]{3}$/;
+				var moduleBoolean = modulePattern.test(moduleCodePlaceholder);
+
+				if (moduleBoolean == false) {
+					if (moduleCodePlaceholder.length == 0) {
+						document.getElementById("moduleErrorMsg").innerHTML = "";
+					}
+					else if (moduleCodePlaceholder.length !== 7) {
+						var mustBe7Char = "The module code must be 7 characters long or empty";
+						document.getElementById("moduleErrorMsg").innerHTML = mustBe7Char;
+					}
+					else {
+						var firstThreeCharPattern = /^[a-z]{3}$/;
+						var lastFourCharPattern = /^[1-9][0-9]{3}$/;
+					
+						var first3CharOFInput = moduleCodePlaceholder.substring(0,3);
+						var last4CharOfInput = moduleCodePlaceholder.substring(3,7);
+						var last4NumberOfInput = Number(last4CharOfInput);
+						
+						if(firstThreeCharPattern.test(first3CharOFInput) == false && lastFourCharPattern.test(last4NumberOfInput) == true) {
+							var firstThreeErrorMsg = "The first three character must be lowercase alphabet characters";
+							document.getElementById("moduleErrorMsg").innerHTML = firstThreeErrorMsg;
+						}
+						else if(lastFourCharPattern.test(last4NumberOfInput) == false && firstThreeCharPattern.test(first3CharOFInput) == true) {
+							var lastFourErrorMsg = "The last four character must be numbers and cannot start with 0";
+							document.getElementById("moduleErrorMsg").innerHTML = lastFourErrorMsg;
+						}
+						else {
+							var bothFalse = "The module code 3 first char must be lowercase alphabet followed by 4 digits which cannot start with 0";
+							document.getElementById("moduleErrorMsg").innerHTML = bothFalse;
+						}
+					}
+						
+				}
+				else {
+					document.getElementById("moduleErrorMsg").innerHTML = "";
+					
+				}
+	
+			}
+			
+			function checkReplaceBox() {
+			var findTextVar = document.getElementById("findvalue").value;
+			
+			if (findTextVar.length == 0 || findTextVar.trim() == "")
+			{
+				var emptyMessage = "This field cannot be empty";
+				document.getElementById("replacevalue").disabled = true;
+				document.getElementById("finderror").innerHTML = emptyMessage.italics().fontcolor("red");
+			}
+			else
+			{ 
+				document.getElementById("replacevalue").disabled = false;
+				document.getElementById("finderror").innerHTML = "";
+			}	
+			}	
+		
+			function checkReplaceButton() {
+			var replaceTextWord = document.getElementById("replacevalue").value;
+			
+			if (replaceTextWord.length == 0 || replaceTextWord.trim() == "")
+			{
+				var emptyMessage = "This field cannot be empty";
+				document.getElementById("replaceerror").innerHTML = emptyMessage.italics().fontcolor("red");
+			}
+			else
+			{
+				document.getElementById("replacebutton").disabled = false; 
+				document.getElementById("replaceerror").innerHTML = "";
+			}	
+			}
+		
+			function findAndReplace() { 
+				var textvarFind = document.getElementById("findvalue").value;
+				var textvarReplace = document.getElementById("replacevalue").value;
+				var textboxInside = document.getElementById("contentBox").value;
+				var count = 0;
+				
+				var reg = new RegExp(textvarFind, "g");
+				var trueContent = textboxInside.replace(reg, function()
+				{
+					count++;
+					return textvarReplace
+				});
+				
+				document.getElementById("contentBox").value = trueContent;
+				
+				var numOfReplacement = count + "  replacement(s) occured.";
+				document.getElementById("replacementCount").innerHTML = numOfReplacement.fontcolor("red");
+			}
+			
+		/*END OF PART 2 Javascript*/
+		
+		
+			/*This two variables serve as a "gatekeeper" for the play button, everytime an error occurs the respective boolean will be set
+			to false, only when both boolean is true will the play button be enabled*/
+			var lowestNumberBoolean = false;
+			var highestNumberBoolean = false;
+			
+			//This two variables are here to tell us if the rule "highest num >= lowest num" is being upholded
+			var lowestInt;
+			var highestInt;
+			
+			//This is the number that will be generated later on
+			var numberToBeGuessed;
+			
+			//Array of guessed numbers
+			var guessedNumberArray = [];
+			
+			//This function updates the lowestInt variable everytime the user updates the textbox
+			function updateLowestInt() {
+				lowestInt = Number(document.getElementById("lowestNum").value);
+			}
+			
+			//This function updates the HhighestInt variable everytime the user updates the textbox
+			function updateHighestInt() {
+				highestInt = Number(document.getElementById("highestNum").value);
+			}
+			
+			//This function checks the lowest number textbox to see if the input is correct or not
+			function checkLowest() {
+				//Variable as the placeholder for the input in lowest number textbox
+				var theLowestNumber = document.getElementById("lowestNum").value;
+				updateLowestInt();//calls the updateLowestInt function everytime a change is detected on the lowest number textbox
+				
+				//If the input is null or just a blank space this will be called
+				if(theLowestNumber == null || theLowestNumber.trim() =="") {
+					lowestNumberBoolean = false;
+					var textNotFilled = "You need to fill in a number";
+					document.getElementById("errorMsgLowest").innerHTML = textNotFilled.fontcolor("blue").italics();
+				}
+				//If the input is not a number this will be called
+				else if(isNaN(theLowestNumber)) {
+					lowestNumberBoolean = false;
+					var notANumber = "This is not a number";
+					document.getElementById("errorMsgLowest").innerHTML = notANumber.fontcolor("blue").italics();
+				}
+				//If the input is a number that is lower than or equal to zero this will be called
+				else if(theLowestNumber <= 0) {
+					lowestNumberBoolean = false;
+					var lessThanOrEqualToZero = "The number must be greater or equal to zero";
+					document.getElementById("errorMsgLowest").innerHTML = lessThanOrEqualToZero.fontcolor("blue").italics()
+				}
+				//If none of the errors above are called, then this will be executed
+				else {
+					lowestNumberBoolean = true;
+					document.getElementById("errorMsgLowest").innerHTML = "";
+					
+				}
+				
+				/*Again this is only here just incase if the user keys in the highestNum text box before the lowestNum text box*/
+				if(lowestNumberBoolean == true && highestNumberBoolean == true) {
+					
+					document.getElementById("startButton").disabled = false;
+				}
+				else 
+					document.getElementById("startButton").disabled = true;
+					
+				checkHighest();
+			}
+			
+			//This function checks the HighestNum text box to see if the input is correct or not
+			function checkHighest() {
+				//Variable as placeholder for the input in highest number textbox
+				var theHighestNumber = document.getElementById("highestNum").value;
+				updateHighestInt();//Calls the updateHighestInt function everytime a change is detected on the highest number textbox
+				
+				//If the input is null or just a blank space this will be called
+				if(theHighestNumber == null || theHighestNumber.trim() == "") {
+					highestNumberBoolean = false;
+					var textNotFilled = "You need to fill in a number";
+					document.getElementById("errorMsgHighest").innerHTML = textNotFilled.fontcolor("blue").italics();
+				}
+				//If the input is not a number this will be called
+				else if(isNaN(theHighestNumber)) {
+					highestNumberBoolean = false;
+					var notANumber = "This is not a number";
+					document.getElementById("errorMsgHighest").innerHTML = notANumber.fontcolor("blue").italics();
+				}
+				//If the input is a number that is lower than or equal to zero this will be called
+				else if(theHighestNumber <= 0) {
+					highestNumberBoolean = false;
+					var lessThanOrEqualToZero = "The number must be greater or equal to zero";
+					document.getElementById("errorMsgHighest").innerHTML = lessThanOrEqualToZero.fontcolor("blue").italics();
+				}
+				//If the highestNum is smaller than the lowestNum this will be called
+				else if(highestInt <= lowestInt) {
+					highestNumberBoolean = false;
+					var mustBeGreaterThanLowestNum = "Highest number must be larger than the lowest number";
+					document.getElementById("errorMsgHighest").innerHTML = mustBeGreaterThanLowestNum.fontcolor("blue").italics();
+				}
+				//If none of the errors above are called, then this will be executed
+				else {
+					highestNumberBoolean = true;
+					document.getElementById("errorMsgHighest").innerHTML = "";
+					checkLowest();//Again this is also here incase the user keys in an error, and updates the highestNum instead of the lowestNum
+				}
+				
+				//Check to see if the lowestNumber and highestNumber boolean are both true or not
+				if(lowestNumberBoolean == true && highestNumberBoolean == true) {
+					
+					document.getElementById("startButton").disabled = false;
+				}
+				else 
+					document.getElementById("startButton").disabled = true;
+			}
+			
+			
+			//This function starts a game and generates a random number
+			function startGame() {
+				//Generates a number between lowest and highest int inclusive of both
+				numberToBeGuessed = Math.floor((Math.random() * (highestInt - lowestInt + 1)) + lowestInt); 
+				//Enable the guess box and guess button
+				document.getElementById("guessBoxArea").disabled = false; 
+				document.getElementById("guessButton").disabled = false;
+				
+				
+				//If this is the second game, then clear all previous messages
+				document.getElementById("guessList").innerHTML = "";
+				document.getElementById("outputMessage").innerHTML ="";
+				document.getElementById("guessBoxArea").value= " ";
+				guessedNumberArray = [];
+			}
+			
+			//This function runs when the guess button is clicked , and checks if the answer is correct or not
+			function guessButtonClicked() {
+				//Placeholder for number that the user guessed
+				var numberGuessed = Number(document.getElementById("guessBoxArea").value)
+				
+				//The numbers guessed are stored here
+				guessedNumberArray.push(numberGuessed);
+				
+				//If the number guessed is to small
+				if(numberGuessed < numberToBeGuessed) {
+					document.getElementById("feedbackMessage").innerHTML = "You guessed " + numberGuessed + " and it is too low";
+				}
+				//If the number guessed is too big
+				else if(numberGuessed > numberToBeGuessed) {
+					document.getElementById("feedbackMessage").innerHTML = "You guessed " + numberGuessed + " and it is too high";
+				}
+				//If the number guessed is correct
+				else if(numberGuessed == numberToBeGuessed) {
+					document.getElementById("feedbackMessage").innerHTML = "";
+					displayFinalOutputMessage();//Runs the function to displays all  guesses	
+				}
+				/*If the user has already tried 5 times, runs the function to displays all guesses, second condition is to prevent a double output
+				incase the user gets the correct answer on the fifth try*/
+				if(guessedNumberArray.length == 5 && numberGuessed != numberToBeGuessed) {
+					displayFinalOutputMessage();
+				}
+			}
+			
+			//This function displays all the guesses
+			function displayFinalOutputMessage() {
+				
+				document.getElementById("guessButton").disabled = true;
+				
+				//Shows the target number
+				document.getElementById("outputMessage").innerHTML = "The target number is " + numberToBeGuessed + "</br></br>";
+				
+				//Loop for displaying the guesses
+				for(var i = 0; i < guessedNumberArray.length; i++) {
+					//This two variables are for appending the guesses to the ul later
+					var li = document.createElement("li");
+					var node;
+					
+					if(guessedNumberArray[i] < numberToBeGuessed) {
+						if(i==4)
+							node = document.createTextNode("Your guess number " + [i+1] + " is " + guessedNumberArray[i] + " and it is too low and this is the last try");
+						else
+							node = document.createTextNode("Your guess number " + [i+1] + " is " + guessedNumberArray[i] + " and it is too low");
+						li.appendChild(node);
+						document.getElementById("guessList").appendChild(li);
+					}
+					
+					if(guessedNumberArray[i] > numberToBeGuessed) {
+						if(i==4)
+							node = document.createTextNode("Your guess number " + [i+1] + " is " + guessedNumberArray[i] + " and it is too high and this is the last try");
+						else
+							node = document.createTextNode("Your guess number " + [i+1] + " is " + guessedNumberArray[i] + " and it is too high");
+						li.appendChild(node);
+						document.getElementById("guessList").appendChild(li);
+					}
+					
+					if(guessedNumberArray[i] == numberToBeGuessed) {
+						if(i==4)
+							node = document.createTextNode("Your guess number " + [i+1] + " is " + guessedNumberArray[i] + " and it is correct and this is the last try");
+						else
+							node = document.createTextNode("Your guess number " + [i+1] + " is " + guessedNumberArray[i] + " and it is correct");
+						li.appendChild(node);
+						document.getElementById("guessList").appendChild(li);
+					}
+				}
+				
+				document.getElementById("guessBoxArea").disabled = true;
+			}
+		/*END OF PART 3 Javascript*/
+		</script>
+	</body>
+	
+	
+</html>

@@ -1,0 +1,486 @@
+<html>
+	<style>
+		/*Makes sure the table's border  and paddings*/
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 5px 25px 5px 2px;
+			border-style: 1px #40407A;
+			margin-bottom: 1em;
+		}
+		
+		/*For top most part of the table*/
+		.heading {
+			background-color: DarkSalmon;
+			text-align:center;
+			vertical-align: middle;
+		}
+		
+		/*For the 2nd to 4th row*/
+		.fillables {
+			background-color: lightblue;
+			width: 33%;
+		}
+		
+		/*For the time and second row*/
+		.information {
+			background-color: LightGoldenRodYellow;
+			width: 33%;
+		}
+		
+		/*For the time font*/
+		.time {
+			font-size: 25px;
+			font-weight: bold;
+
+		}
+		
+		/*For the second font*/
+		.seconds {
+			font-size: 25px;
+			font-weight: bold;
+			color: red;
+		}
+		
+		/*For the score font*/
+		.score {
+			font-size: 25px;
+			font-weight: bold;
+		}
+		
+		/*For the point font*/
+		.points {
+			font-size: 25px;
+			font-weight: bold;
+			color: red;
+		}
+		
+		/*For the row that stores the buttons*/
+		.buttons {
+			background-color: lightgreen;
+		}
+		
+		/*For the player listing row*/
+		.listing {
+			background-color: NavajoWhite;
+			vertical-align:text-top;
+		}	
+		
+		/*For the ul on playerListing */
+		.listinglabel {
+			font-weight: bold;
+			vertical-align:text-top;
+		}
+		
+		/*For the 3 option buttons row*/
+		.allThreeOptionns {
+			height:60px;
+			width: 100%;
+			
+		}
+		
+		/*For the 3 option buttons*/
+		.tdOptionClass {
+			padding-right: 0px;
+		}
+	</style>
+	<body>
+		<div  style="margin-bottom:100px">
+			<h2>PART 1</h2>
+			
+			<table style="border: solid black 1px;" height="250px" >
+			
+				<tr>
+					<th style="border: solid black 1px; background-color: lightblue; width:600px; height:60px;" colspan="3" >CSIT128: Assignment 3 </th> 
+					<th style="border: solid black 1px;  background-color: lightblue; width:350px; height:60px;" >Tutorial Group 4</th>
+				</tr>
+				
+				<tr > 
+					<td style="border: solid black 1px; "  rowspan="3 ">&nbsp;Student Number/Name/Email </td>
+					<td style="border: solid black 1px;">6742555</td>
+					<td style="border: solid black 1px;" >Limousine  </td>
+					<td style="border: solid black 1px;">limousine196@gmail.com </td> 
+				</tr>
+	
+				<tr> 
+					<td style="border: solid black 1px;">6742014</td>
+					<td style="border: solid black 1px;">Kenndy</td>
+					<td style="border: solid black 1px;">k032@mymail.sim.edu.sg</td>
+				</tr>
+	
+				<tr> 
+					<td style="border: solid black 1px;">6744205</td>
+					<td style="border: solid black 1px;">Patrick Figo Styadinata</td>
+					<td style="border: solid black 1px;">pfstyadi001@mymail.sim.edu.sg</td>
+				</tr>
+			</table>
+		</div>
+
+		<h2>PART 2</h2>
+		<table border ="1" width="60%">
+			<tr class="heading">
+				<td colspan ="3"> <h1> Assignment 3 Part 2 </h1>
+			</tr>
+			
+			<tr>
+				<td class ="fillables">Player Name: 
+				<td class="fillables"><input type = "text" id="playerName" onChange="checkName();"	size ="30px" > <br>
+					<span id="nameError"> </span>
+				<td rowspan = "3" class="information"> 
+                    <label class="time">Time:</label>
+                    <label class="seconds" id="second">0 </label><label class="seconds"> seconds </label>
+                    <br>
+                    <label class="score">Score:</label>
+                    <label id="point" class="points">0 </label></label><label class="points"> points </label>
+
+			<tr class ="fillables">
+				<td>The Target Option:
+				<td><select id ="userTargetOption" style="padding: 5px 70px 5px 70px">
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>A</option>
+						<option>B</option>
+						<option>C</option>
+						<option>D</option>
+						<option>E</option>
+						<option>F</option>
+						<option>G</option>
+						<option>H</option>
+						<option>I</option>
+						<option>J</option>
+						<option>K</option>
+						<option>L</option>
+						<option>M</option>
+						<option>N</option>
+						<option>O</option>
+						<option>P</option>
+						<option>Q</option>
+						<option>R</option>
+						<option>S</option>
+						<option>T</option>
+						<option>U</option>
+						<option>V</option>
+						<option>W</option>
+						<option>X</option>
+						<option>Y</option>
+						<option>Z</option>
+					</select>
+			</tr>
+			<tr class="fillables">
+				<td>The difficulty level:
+				<td><input type ="radio" name= "difficulty" value ="easy" id ="easyLevel" checked>
+					<label>Easy</label><br> 
+					<input type ="radio" name= "difficulty" value ="medium" id="mediumLevel">
+					<label>Medium</label><br>
+					<input type="radio" name= "difficulty" value ="hard" id="hardLevel">
+					<label>Hard</label>
+			</tr>
+			<tr class="buttons">
+				<td colspan="3"><input type="submit" id ="startButton" value="Start Button" onclick= "startGame()" style="margin-left:180px;"> 
+				<input id = "stopButton" type="submit" value="Stop Button" onclick= "stopGame()" style="margin-left:300px;"disabled>
+				
+			</tr>
+			<tr height ="60px">
+				<td class="tdOptionClass"><button id="firstOption" onclick="checkAnswer1()" class="allThreeOptionns"> </button> 
+				<td class="tdOptionClass"><button id="secondOption" onclick="checkAnswer2()" class="allThreeOptionns"> </button> 
+				<td class="tdOptionClass"><button id="thirdOption" onclick="checkAnswer3()" class="allThreeOptionns"> </button> 
+			</tr>
+			<tr height = "90px" class ="listing">
+				<td  colspan ="3" > <span class="listinglabel">Player Listing<span>
+					<ul id="playerList" >
+					</ul>
+			</tr>
+		</table>
+
+		<script>
+			
+			/*This function start the game and it also calls the function to check the names*/
+			function startGame() {
+				point = 0;
+				seconds=0;
+				if(checkName() == false) 
+					checkName();
+				else {
+					generateOptions();
+					incrementSeconds();
+
+					document.getElementById("startButton").disabled = true;
+					document.getElementById("stopButton").disabled = false;
+
+					point=0;
+				document.getElementById("point").innerHTML = point;
+
+				second = 0 ;
+				document.getElementById("second").innerHTML = second;
+
+				}
+					
+			}
+			
+			/*This function stops the 3 button from changing*/
+			function stopGenerateOptions(){
+			
+				clearInterval(callGenerateThreeOptions);
+				
+			}
+
+			var seconds = 0;
+			var sec1 = document.getElementById("second");
+			
+			/*This function stops the timer from running*/
+			function stopSeconds() {
+			clearTimeout(cancel);
+			}	
+			
+			/*This function starts the timer, and keeps calling the timer every 1 second*/
+			function incrementSeconds() {
+				
+				seconds += 1
+				sec1.innerText = seconds;
+				cancel = setTimeout(incrementSeconds,1000);
+
+			}
+			
+			/*This function checks the name if it is blank, or if it already exist(checking if the name exist is in another function)*/
+			function checkName() {
+				
+				var name = document.getElementById("playerName").value;
+				
+				if(name.trim() == "") {
+					var emptyName = "This is a required field";
+					document.getElementById("nameError").innerHTML = emptyName.bold().fontcolor("red");
+					return false;
+				}
+				else if(checkUniqueName(name) == false) {
+					var uniqueName = "This name already exist on the listing";
+					document.getElementById("nameError").innerHTML = uniqueName.bold().fontcolor("red");
+					return false;
+				}
+				else {
+					document.getElementById("nameError").innerHTML = "";
+					return true;
+				}
+			}
+			
+			/*Checks if the name already exist on the listing*/
+			function checkUniqueName(currentPlayerName) {
+			
+				var li = document.getElementById("playerList");
+				var insideLi = li.getElementsByTagName("li");
+			
+				for (var i = 0, numOfNames = insideLi.length; i < numOfNames; i++ ) {
+				   if(currentPlayerName == insideLi[i].innerText)
+						return false;
+				}
+				
+				return true;
+				
+			}
+			
+			/*This function generates the 10 options*/
+			function generateOptions() {
+				 selectedOption = document.getElementById("userTargetOption").value;
+				
+				var numberPattern = /[0-9]/;
+				var charPattern = /[A-Z]/;
+				
+				var isItANumber = numberPattern.test(selectedOption);
+				var isItAChar = charPattern.test(selectedOption);
+				
+				var characterList = [];
+				var numberList = [];
+				
+				if(isItANumber == true) {
+					characterList = generateCharacters(5);
+					numberList = generateNumbers(4);
+				}
+				else if (isItAChar == true) {
+					characterList = generateCharacters(4);
+					numberList = generateNumbers(5);
+				}
+				
+				 finalOptionList = [];
+				
+				for(var i = 0 ; i < characterList.length ; i++)
+					finalOptionList.push(characterList[i]);
+				
+				for(var i = 0 ; i < numberList.length ; i++)
+					finalOptionList.push(numberList[i]);
+					
+				generateThreeOptionsInterval(finalOptionList);
+				
+			}
+			
+			/*This function generates either 4 or 5 characters*/
+			function generateCharacters(length) {
+				
+				var characters = [];
+				for(var i =0 ; i<length ; i++) {
+					
+					var e = String.fromCharCode(Math.floor(Math.random() * (90 - 65 + 1) + 65));
+					characters.push(e);
+				}
+				
+				if (length == 4) {
+					var selectedOption = document.getElementById("userTargetOption").value;
+					characters.push(selectedOption);
+				}
+				
+				return characters;
+			}
+			
+			/*This function generates either 4 or 5 numbers*/
+			function generateNumbers(length) {
+				
+				var numbers = [];
+				for(var i =0 ; i<length ; i++) {
+					
+					var e = Math.floor(Math.random() * 10);
+					numbers.push(e);
+				}
+				
+				if (length == 4) {
+					var selectedOption = document.getElementById("userTargetOption").value;
+					numbers.push(selectedOption);
+				}
+				
+				return numbers;
+			}
+			
+			/*This function determines how many seconds a button stays, and also calls the function that generates the 3 buttons*/
+			function generateThreeOptionsInterval(arrayOfOptions) {
+				var interval;
+			 	var wow = arrayOfOptions;
+				
+				if(document.getElementById("easyLevel").checked)
+					interval = 3000;
+				else if(document.getElementById("mediumLevel").checked)
+					interval = 2000;
+				else if(document.getElementById("hardLevel").checked)
+					interval = 1000;
+				
+				 callGenerateThreeOptions =  setInterval(function(){generateThreeOptions(wow);},interval);
+			
+			}
+			
+			/*This function generates the 3 buttons*/
+			function generateThreeOptions(arrayOfOptions) {
+				clicked = false;
+
+				var firstOption;
+				var secondOption;
+				var thirdOption; 
+					
+				do {
+					var firstOption = Math.floor(Math.random() * 10);
+					var secondOption = Math.floor(Math.random() * 10);
+					var thirdOption = Math.floor(Math.random() * 10);
+				}
+				while(firstOption == secondOption || firstOption == thirdOption || secondOption == thirdOption ||
+					arrayOfOptions[firstOption] == arrayOfOptions[secondOption] || arrayOfOptions[firstOption] == arrayOfOptions[thirdOption] ||
+					arrayOfOptions[secondOption] == arrayOfOptions[thirdOption]);
+				
+				document.getElementById("firstOption").innerHTML = arrayOfOptions[firstOption];
+				document.getElementById("secondOption").innerHTML = arrayOfOptions[secondOption];
+				document.getElementById("thirdOption").innerHTML = arrayOfOptions[thirdOption];
+
+			}
+			
+			/*This function stops the game, appends the player name, and also stop the timer and button*/
+			function stopGame() {
+				
+				var li = document.getElementById("playerList");
+				var insideLi = li.getElementsByTagName("li");
+				var currentPlayerName = document.getElementById("playerName").value;
+				
+				
+				var name = document.getElementById("playerName").value;
+				var li = document.createElement("li");
+				var node = document.createTextNode(name);
+				li.appendChild(node);
+				document.getElementById("playerList").appendChild(li);
+			
+				stopSeconds();
+				stopGenerateOptions();
+				document.getElementById("startButton").disabled = false;
+				document.getElementById("stopButton").disabled = true;
+				
+			}
+			
+			point = Number(document.getElementById("point").innerHTML); 
+
+			answer;
+			/*This variable is responsible for making sure the buttons can only be pressed once every interval*/
+			var clicked = false;
+			
+			/*This function generates the points either +2 or -1*/
+			function checkAnswer1(){
+			 	answer= document.getElementById("firstOption").innerHTML;
+				
+				if (!clicked){
+					clicked = true;
+
+					if (answer == selectedOption  ){
+					point = point+2;
+					document.getElementById("point").innerHTML = point;
+					
+					}
+					else
+					{
+						point = point - 1 ;
+					document.getElementById("point").innerHTML = point;
+					}
+				}
+	
+			 }
+			/*This function generates the points either +2 or -1*/
+			function checkAnswer2(){
+				answer= document.getElementById("secondOption").innerHTML;
+				
+				if (!clicked){
+					 clicked = true;
+					 if (answer == selectedOption  ){
+					point = point+2;
+					document.getElementById("point").innerHTML = point;
+				
+					}
+					else{
+						point = point - 1 ;
+					document.getElementById("point").innerHTML = point;
+					}
+				}
+
+			}
+
+			/*This function generates the points either +2 or -1*/
+			function checkAnswer3(){
+				answer= document.getElementById("thirdOption").innerHTML;
+
+				if(!clicked){
+					clicked = true;
+					if (answer == selectedOption  ){
+					point = point+2;
+					document.getElementById("point").innerHTML = point;
+					
+					}
+					else{
+						point = point - 1 ;
+					document.getElementById("point").innerHTML = point;
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+
+</html>
